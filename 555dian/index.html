@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>555电影网在线观看-高清电影在线观看_影视大全免费观看</title>
+<meta name="description" content="555电影网在线观看提供高清电影与电视剧在线播放入口，涵盖热门片单、分类浏览与搜索功能，帮助观众快速找到想看的影片。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f1720'/%3E%3Ccircle cx='32' cy='32' r='17' fill='none' stroke='%23f5b301' stroke-width='3'/%3E%3Cpath d='M27 23l16 9-16 9z' fill='%23f5b301'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#0f1720;
+  --bg-soft:#161f2b;
+  --card:#1b2532;
+  --line:#2a3646;
+  --text:#e8edf3;
+  --muted:#98a5b6;
+  --gold:#f5b301;
+  --gold-soft:#ffd35c;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+.wrap{width:100%;max-width:1160px;margin:0 auto;padding:0 20px}
+
+/* 页头 */
+header.site-head{
+  position:sticky;top:0;z-index:50;
+  background:rgba(15,23,32,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.head-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;min-height:66px;
+}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;letter-spacing:.5px}
+.logo .mark{width:32px;height:32px;flex:0 0 auto}
+.logo span.brand{white-space:nowrap}
+.logo span.brand em{color:var(--gold);font-style:normal}
+nav.main-nav{display:flex;align-items:center;gap:22px;font-size:14.5px;color:var(--muted)}
+nav.main-nav a{position:relative;padding:4px 0;transition:color .2s}
+nav.main-nav a:hover{color:var(--gold-soft)}
+nav.main-nav a::after{
+  content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;
+  background:var(--gold);transition:width .25s;
+}
+nav.main-nav a:hover::after{width:100%}
+.nav-toggle{display:none}
+
+/* 首屏 */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(1100px 460px at 78% -12%,rgba(245,179,1,.16),transparent 62%),
+    radial-gradient(720px 380px at 8% 110%,rgba(56,120,200,.14),transparent 65%),
+    var(--bg-soft);
+  border-bottom:1px solid var(--line);
+}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:56px 56px;
+  mask-image:linear-gradient(to bottom,rgba(0,0,0,.8),transparent 88%);
+  pointer-events:none;
+}
+.hero-inner{position:relative;padding:64px 0 56px;display:grid;grid-template-columns:1.35fr .9fr;gap:44px;align-items:center}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12.5px;letter-spacing:2px;color:var(--gold);
+  border:1px solid rgba(245,179,1,.4);
+  border-radius:999px;padding:4px 14px;margin-bottom:20px;
+}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold)}
+h1{
+  font-size:clamp(26px,4.2vw,42px);
+  line-height:1.28;font-weight:800;letter-spacing:.5px;
+  margin-bottom:18px;
+}
+h1 .hl{color:var(--gold)}
+.hero p.lead{color:var(--muted);font-size:15.5px;max-width:560px;margin-bottom:26px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 24px;border-radius:8px;font-size:15px;font-weight:600;
+  transition:transform .18s,box-shadow .18s,background .18s;
+}
+.btn-primary{background:linear-gradient(135deg,var(--gold),#ffca3a);color:#1a1300;box-shadow:0 6px 20px rgba(245,179,1,.25)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(245,179,1,.34)}
+.btn-ghost{border:1px solid var(--line);color:var(--text);background:rgba(255,255,255,.03)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold-soft)}
+
+/* 首屏海报视觉 */
+.hero-visual{position:relative;display:flex;justify-content:center}
+.poster-card{
+  width:100%;max-width:320px;border-radius:16px;overflow:hidden;
+  border:1px solid var(--line);background:var(--card);
+  box-shadow:0 24px 60px rgba(0,0,0,.5);
+  transform:rotate(-2deg);
+}
+.poster-card .screen{aspect-ratio:16/10;background:linear-gradient(150deg,#22303f,#101822);position:relative}
+.poster-card .screen svg{width:100%;height:100%}
+.poster-card .meta{padding:14px 16px 16px}
+.poster-card .meta strong{display:block;font-size:14.5px;margin-bottom:4px}
+.poster-card .meta small{color:var(--muted);font-size:12.5px}
+.rating{
+  position:absolute;right:14px;top:14px;z-index:2;
+  background:rgba(15,23,32,.78);border:1px solid rgba(245,179,1,.45);
+  color:var(--gold-soft);font-size:12.5px;font-weight:700;
+  padding:2px 9px;border-radius:6px;
+}
+
+/* 通用区块 */
+section.block{padding:58px 0}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:30px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(20px,2.6vw,25px);font-weight:800;letter-spacing:.4px}
+.sec-head h2 .bar{display:inline-block;width:5px;height:20px;border-radius:3px;background:var(--gold);margin-right:10px;vertical-align:-2px}
+.sec-head p{color:var(--muted);font-size:13.5px;max-width:520px}
+
+/* 搜索 */
+.search-panel{
+  background:var(--bg-soft);border:1px solid var(--line);border-radius:14px;
+  padding:24px;display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;
+}
+.search-field{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:9px;padding:0 14px}
+.search-field:focus-within{border-color:var(--gold)}
+.search-field svg{width:18px;height:18px;flex:0 0 auto;color:var(--muted)}
+.search-field input{
+  width:100%;border:0;outline:0;background:transparent;color:var(--text);
+  font-size:15px;padding:12px 0;font-family:inherit;
+}
+.search-field input::placeholder{color:#6d7c8e}
+.chips{display:flex;flex-wrap:wrap;gap:8px;grid-column:1/-1}
+.chip{
+  font-size:12.5px;color:var(--muted);border:1px solid var(--line);
+  border-radius:999px;padding:4px 12px;cursor:pointer;background:transparent;
+  transition:.2s;font-family:inherit;
+}
+.chip:hover,.chip.on{border-color:var(--gold);color:var(--gold-soft)}
+.btn-search{
+  border:0;cursor:pointer;font-family:inherit;font-size:15px;font-weight:600;
+  padding:12px 28px;border-radius:9px;background:linear-gradient(135deg,var(--gold),#ffca3a);color:#1a1300;
+  transition:transform .18s,box-shadow .18s;
+}
+.btn-search:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(245,179,1,.3)}
+
+/* 影片网格 */
+.movie-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.movie-card{
+  background:var(--card);border:1px solid var(--line);border-radius:12px;
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:transform .22s,border-color .22s,box-shadow .22s;
+}
+.movie-card:hover{transform:translateY(-4px);border-color:rgba(245,179,1,.55);box-shadow:0 16px 34px rgba(0,0,0,.42)}
+.thumb{aspect-ratio:16/10;position:relative;overflow:hidden;background:#131c27}
+.thumb svg{width:100%;height:100%}
+.thumb .tag{
+  position:absolute;left:10px;top:10px;
+  font-size:11.5px;font-weight:600;letter-spacing:.5px;
+  background:rgba(15,23,32,.8);border:1px solid rgba(255,255,255,.12);
+  color:var(--gold-soft);padding:2px 8px;border-radius:5px;
+}
+.card-body{padding:14px 15px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card-body h3{font-size:15px;font-weight:700;letter-spacing:.3px}
+.card-body .desc{font-size:12.8px;color:var(--muted);line-height:1.6}
+.card-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#6d7c8e;padding-top:8px}
+.card-foot .go{color:var(--gold);font-weight:600}
+
+/* 分类栏目 */
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.cat-card{
+  background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;
+  padding:22px 22px 20px;transition:border-color .2s,background .2s;
+}
+.cat-card:hover{border-color:rgba(245,179,1,.5);background:#1a2431}
+.cat-card .icon{
+  width:40px;height:40px;border-radius:10px;display:grid;place-items:center;
+  background:rgba(245,179,1,.12);color:var(--gold);margin-bottom:14px;
+}
+.cat-card h3{font-size:16px;font-weight:700;margin-bottom:8px}
+.cat-card p{font-size:13.5px;color:var(--muted)}
+.cat-card .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.cat-card .links a{font-size:12.5px;color:#8fa3b8;border-bottom:1px dashed transparent;transition:.2s}
+.cat-card .links a:hover{color:var(--gold-soft);border-bottom-color:var(--gold-soft)}
+
+/* 播放说明 + 正文 */
+.two-col{display:grid;grid-template-columns:1.5fr 1fr;gap:36px;align-items:start}
+.article-body h2{font-size:22px;font-weight:800;margin-bottom:16px;letter-spacing:.4px}
+.article-body h3{font-size:16.5px;font-weight:700;margin:22px 0 8px;color:var(--gold-soft)}
+.article-body p{font-size:14.8px;color:#c2ccd8;margin-bottom:12px}
+.article-body p strong{color:var(--text)}
+.aside-card{
+  background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;
+  padding:22px;
+}
+.aside-card h3{font-size:15.5px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.aside-card h3::before{content:"";width:4px;height:15px;border-radius:2px;background:var(--gold)}
+.step-list{list-style:none;display:flex;flex-direction:column;gap:14px}
+.step-list li{display:flex;gap:12px;font-size:13.6px;color:var(--muted)}
+.step-list .num{
+  flex:0 0 24px;height:24px;border-radius:7px;display:grid;place-items:center;
+  background:rgba(245,179,1,.13);color:var(--gold);font-size:12.5px;font-weight:700;
+}
+.notice{
+  margin-top:16px;padding:12px 14px;border-radius:9px;
+  background:rgba(245,179,1,.07);border:1px solid rgba(245,179,1,.25);
+  font-size:12.8px;color:#d3c39a;line-height:1.7;
+}
+
+/* 常见问题 */
+.faq{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.faq-item{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:18px 20px}
+.faq-item h3{font-size:15px;font-weight:700;margin-bottom:7px;color:var(--text)}
+.faq-item p{font-size:13.6px;color:var(--muted)}
+
+/* 下载条 */
+.dl-bar{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;
+  background:linear-gradient(120deg,#1d2735,#141c26);
+  border:1px solid var(--line);border-radius:14px;padding:26px 28px;
+}
+.dl-bar .txt h3{font-size:18px;font-weight:800;margin-bottom:6px}
+.dl-bar .txt p{font-size:13.5px;color:var(--muted);max-width:560px}
+.btn-download{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 26px;border-radius:9px;font-size:15px;font-weight:600;
+  background:linear-gradient(135deg,var(--gold),#ffca3a);color:#1a1300;
+  pointer-events:none;opacity:.95;
+}
+
+/* 页尾 */
+footer.site-foot{
+  border-top:1px solid var(--line);background:#0c131b;
+  padding:38px 0 26px;margin-top:20px;
+}
+.foot-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;margin-bottom:24px}
+.foot-brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15.5px}
+.foot-brand .mark{width:28px;height:28px}
+.foot-links{display:flex;flex-wrap:wrap;gap:20px;font-size:13.5px;color:var(--muted)}
+.foot-links a:hover{color:var(--gold-soft)}
+.foot-bottom{
+  border-top:1px solid #1b2431;padding-top:18px;
+  font-size:12.5px;color:#61707f;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
+}
+
+/* 响应式 */
+@media(max-width:960px){
+  .hero-inner{grid-template-columns:1fr;gap:34px;padding:48px 0 44px}
+  .hero-visual{justify-content:flex-start}
+  .movie-grid{grid-template-columns:repeat(2,1fr)}
+  .cat-grid{grid-template-columns:1fr}
+  .two-col{grid-template-columns:1fr;gap:26px}
+  .faq{grid-template-columns:1fr}
+}
+@media(max-width:720px){
+  .nav-toggle{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:38px;height:38px;border-radius:8px;border:1px solid var(--line);
+    background:transparent;color:var(--text);cursor:pointer;
+  }
+  nav.main-nav{
+    position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;align-items:stretch;gap:0;
+    background:#111a24;border-bottom:1px solid var(--line);
+    padding:8px 20px 14px;display:none;font-size:15px;
+  }
+  nav.main-nav.open{display:flex}
+  nav.main-nav a{padding:11px 0;border-bottom:1px solid #1c2734}
+  nav.main-nav a:last-child{border-bottom:0}
+  nav.main-nav a::after{display:none}
+  .head-inner{position:relative;min-height:60px}
+  .logo{font-size:15px}
+  .search-panel{grid-template-columns:1fr;padding:18px}
+  .btn-search{width:100%}
+  .movie-grid{grid-template-columns:1fr;gap:16px}
+  section.block{padding:42px 0}
+  .hero p.lead{font-size:14.5px}
+  .dl-bar{padding:22px}
+  .sec-head{margin-bottom:22px}
+}
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap head-inner">
+    <a class="logo" href="#top" aria-label="555电影网在线观看 首页">
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#1b2532" stroke="#2a3646"/>
+        <circle cx="32" cy="32" r="17" fill="none" stroke="#f5b301" stroke-width="3"/>
+        <path d="M27 23l16 9-16 9z" fill="#f5b301"/>
+      </svg>
+      <span class="brand">555电影网在线观看</span>
+    </a>
+    <nav class="main-nav" id="mainNav" aria-label="主导航">
+      <a href="#hot">热门片单</a>
+      <a href="#category">分类浏览</a>
+      <a href="#howto">观看说明</a>
+      <a href="#faq">常见问题</a>
+      <a href="#download">客户端</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="展开导航" aria-expanded="false" aria-controls="mainNav">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 首屏 -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="dot"></span>影视在线播放入口</span>
+        <h1>555电影网在线观看</h1>
+        <p class="lead">一个面向影迷的在线观影页面：按类型、地区与热度整理片单，支持关键词搜索与分类浏览，打开即能找到<strong>555电影网在线观看</strong>对应的影片入口与观看方式。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#hot">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            浏览热门片单
+          </a>
+          <a class="btn btn-ghost" href="#category">按分类找片</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="poster-card">
+          <div class="screen">
+            <span class="rating">热度 9.2</span>
+            <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#2b3f56"/>
+                  <stop offset="1" stop-color="#101822"/>
+                </linearGradient>
+                <linearGradient id="beam" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#f5b301" stop-opacity=".55"/>
+                  <stop offset="1" stop-color="#f5b301" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <rect width="320" height="200" fill="url(#sky)"/>
+              <circle cx="252" cy="54" r="30" fill="#f5b301" opacity=".18"/>
+              <circle cx="252" cy="54" r="17" fill="#f5b301" opacity=".4"/>
+              <polygon points="0,200 96,86 178,200" fill="#1c2836"/>
+              <polygon points="120,200 214,64 320,200" fill="#16202c"/>
+              <polygon points="150,200 214,64 278,200" fill="url(#beam)" opacity=".5"/>
+              <circle cx="160" cy="150" r="14" fill="none" stroke="#f5b301" stroke-width="2.4"/>
+              <path d="M155 143l12 7-12 7z" fill="#f5b301"/>
+            </svg>
+          </div>
+          <div class="meta">
+            <strong>本周片单更新</strong>
+            <small>剧情 · 悬疑 · 动画 · 纪录片 多类型可筛</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 搜索 -->
+  <section class="block" id="search">
+    <div class="wrap">
+      <div class="search-panel">
+        <label class="search-field" for="movieSearch">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>
+          </svg>
+          <input id="movieSearch" type="search" placeholder="输入片名、类型或地区，例如：悬疑、日本、动画" autocomplete="off">
+        </label>
+        <button class="btn-search" id="searchBtn" type="button">搜索影片</button>
+        <div class="chips" id="chips">
+          <button class="chip on" type="button" data-key="">全部</button>
+          <button class="chip" type="button" data-key="剧情">剧情</button>
+          <button class="chip" type="button" data-key="悬疑">悬疑</button>
+          <button class="chip" type="button" data-key="动画">动画</button>
+          <button class="chip" type="button" data-key="纪录">纪录</button>
+          <button class="chip" type="button" data-key="国产">国产</button>
+          <button class="chip" type="button" data-key="欧美">欧美</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 热门片单 -->
+  <section class="block" id="hot" style="padding-top:10px">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2><span class="bar"></span>热门片单</h2>
+        <p>按近期关注度排列的影片卡片，点击卡片可在上方搜索栏定位同类影片，具体播放以片源页面为准。</p>
+      </div>
+      <div class="movie-grid" id="movieGrid">
+
+        <article class="movie-card" data-key="剧情 国产 悬疑">
+          <div class="thumb">
+            <span class="tag">剧情</span>
+            <svg viewBox="0 0 300 188" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="300" height="188" fill="#1f2b3a"/>
+              <circle cx="228" cy="52" r="26" fill="#f5b301" opacity=".22"/>
+              <path d="M0 160 L70 96 L132 160 Z" fill="#141d28"/>
+              <path d="M110 160 L196 78 L300 160 Z" fill="#101822"/>
+              <rect x="24" y="24" width="52" height="6" rx="3" fill="#3a4a5e"/>
+              <rect x="24" y="40" width="30" height="6" rx="3" fill="#2c3a4b"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3>长夜将尽</h3>
+            <p class="desc">小城旧案牵出多年谜团，叙事节奏沉稳，适合喜欢慢热悬疑的观众。</p>
+            <div class="card-foot"><span>剧情 · 悬疑</span><span class="go">查看同类</span></div>
+          </div>
+        </article>
+
+        <article class="movie-card" data-key="动画 欧美">
+          <div class="thumb">
+            <span class="tag">动画</span>
+            <svg viewBox="0 0 300 188" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="300" height="188" fill="#1d2a3c"/>
+              <circle cx="150" cy="94" r="52" fill="none" stroke="#f5b301" stroke-width="2.5" opacity=".8"/>
+              <circle cx="150" cy="94" r="30" fill="#f5b301" opacity=".18"/>
+              <path d="M96 94h108M150 40v108" stroke="#3b4c60" stroke-width="1.5"/>
+              <circle cx="96" cy="94" r="6" fill="#f5b301"/>
+              <circle cx="204" cy="94" r="6" fill="#f5b301"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3>星海拾光</h3>
+            <p class="desc">一段关于远行与归途的动画故事，手绘质感与配乐是主要看点。</p>
+            <div class="card-foot"><span>动画 · 奇幻</span><span class="go">查看同类</span></div>
+          </div>
+        </article>
+
+        <article class="movie-card" data-key="悬疑 欧美 剧情">
+          <div class="thumb">
+            <span class="tag">悬疑</span>
+            <svg viewBox="0 0 300 188" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="300" height="188" fill="#182533"/>
+              <rect x="40" y="36" width="220" height="116" rx="6" fill="none" stroke="#3a4c61" stroke-width="2"/>
+              <path d="M52 132 L98 84 L134 122 L178 66 L248 132" fill="none" stroke="#f5b301" stroke-width="2.5" stroke-linejoin="round"/>
+              <circle cx="178" cy="66" r="5" fill="#f5b301"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3>第七封来信</h3>
+            <p class="desc">以书信为线索的双线叙事，反转集中在后段，建议不看剧透。</p>
+            <div class="card-foot"><span>悬疑 · 剧情</span><span class="go">查看同类</span></div>
+          </div>
+        </article>
+
+        <article class="movie-card" data-key="纪录 国产">
+          <div class="thumb">
+            <span class="tag">纪录</span>
+            <svg viewBox="0 0 300 188" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="300" height="188" fill="#1b2735"/>
+              <path d="M0 140 Q75 108 150 132 T300 120 L300 188 L0 188 Z" fill="#111a24"/>
+              <path d="M0 158 Q80 136 160 152 T300 146 L300 188 L0 188 Z" fill="#0d151e"/>
+              <circle cx="66" cy="52" r="16" fill="#f5b301" opacity=".5"/>
+              <path d="M120 70h60M120 84h40" stroke="#3d4f63" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3>山与河的日常</h3>
+            <p class="desc">记录普通人的四季生活，镜头安静，适合作为轻松的周末观影。</p>
+            <div class="card-foot"><span>纪录片</span><span class="go">查看同类</span></div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 分类浏览 -->
+  <section class="block" id="category" style="background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2><span class="bar"></span>分类浏览</h2>
+        <p>不知道看什么时，可以先从类型、地区或时长维度缩小范围，再进入具体片单页面。</p>
+      </div>
+      <div class="cat-grid">
+        <div class="cat-card">
+          <div class="icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <rect x="2" y="4" width="20" height="16" rx="2"/><path d="M10 9l5 3-5 3z"/>
+            </svg>
+          </div>
+          <h3>按类型找片</h3>
+          <p>剧情、悬疑、喜剧、动画、纪录片等常见类型都有独立入口，方便按心情挑片。</p>
+          <div class="links"><a href="#hot">剧情</a><a href="#hot">悬疑</a><a href="#hot">动画</a><a href="#hot">纪录片</a></div>
+        </div>
+        <div class="cat-card">
+          <div class="icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14 0 18M12 3C9 6.5 9 17.5 12 21"/>
+            </svg>
+          </div>
+          <h3>按地区浏览</h3>
+          <p>国产、欧美、日韩等地区分类，适合有明确口味偏好的观众快速筛选。</p>
+          <div class="links"><a href="#hot">国产</a><a href="#hot">欧美</a><a href="#hot">日韩</a><a href="#hot">合拍</a></div>
+        </div>
+        <div class="cat-card">
+          <div class="icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M12 3l2.6 5.6L21 9.4l-4.5 4.3 1.1 6.3L12 17l-5.6 3 1.1-6.3L3 9.4l6.4-.8z"/>
+            </svg>
+          </div>
+          <h3>按热度排序</h3>
+          <p>热门片单依据站内浏览与收藏情况整理，仅反映关注度，不代表内容评价结论。</p>
+          <div class="links"><a href="#hot">本周热门</a><a href="#hot">高分推荐</a><a href="#hot">新片速览</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 观看说明 + 正文 -->
+  <section class="block" id="howto">
+    <div class="wrap two-col">
+      <div class="article-body">
+        <h2>555电影网在线观看 的观看方式</h2>
+        <p>很多观众搜索 <strong>555电影网在线观看</strong>，实际想要的是一个能直接找到影片并开始播放的入口。本页把这一步拆成更清晰的路径：先在搜索框输入片名或类型，再在片单卡片中确认影片信息，最后进入对应片源页面播放。</p>
+        <h3>先确认影片信息</h3>
+        <p>片名、年份、地区和类型是区分同名影片最有效的四个字段。像“悬疑”“剧情”这类宽泛标签，建议配合地区一起筛选，能明显减少无关结果。卡片上的简短描述用于说明影片基调与叙事特点，不替代完整简介。</p>
+        <h3>再选择播放入口</h3>
+        <p>不同影片的片源可能来自不同线路，画质与加载速度会有差异。遇到播放不顺畅时，可以返回片单换一条线路重试；如果多个线路同时不可用，通常说明该影片当前暂无可播片源，稍后再看即可。<strong>555电影网在线观看</strong>页面只做信息整理与入口汇聚，不改变原片源的内容。</p>
+        <h3>合理安排观影时间</h3>
+        <p>系列片建议按上映顺序观看，改编作品可以先看原著背景再决定顺序。纪录片与短剧集更适合碎片时间，长片则建议留出完整时段，避免中途打断影响理解。对题材敏感的观众，可先查看简介中的关键词提示。</p>
+        <p>如果你已经确定想看的方向，直接回到上方的搜索栏输入片名即可；还没有目标时，浏览热门片单与分类栏目通常更快找到<strong>555电影网在线观看</strong>相关的影片线索。</p>
+      </div>
+      <aside class="aside-card">
+        <h3>三步开始观看</h3>
+        <ol class="step-list">
+          <li><span class="num">1</span><span>在搜索框输入片名、类型或地区关键词，点击“搜索影片”。</span></li>
+          <li><span class="num">2</span><span>在筛选后的片单卡片中核对片名与类型，确认目标影片。</span></li>
+          <li><span class="num">3</span><span>进入片源页面选择可用线路播放，必要时切换线路重试。</span></li>
+        </ol>
+        <div class="notice">提示：本站不存储影片文件，播放内容与画质由对应片源提供。若片源失效，可稍后重试或选择同类影片。</div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 常见问题 -->
+  <section class="block" id="faq" style="background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2><span class="bar"></span>常见问题</h2>
+        <p>关于搜索、播放与片单更新的高频疑问。</p>
+      </div>
+      <div class="faq">
+        <div class="faq-item">
+          <h3>搜索不到影片怎么办？</h3>
+          <p>先缩短关键词，只保留片名中的两到三个字；或改用类型、地区等宽泛词。仍未找到，说明该影片暂未收录到当前片单。</p>
+        </div>
+        <div class="faq-item">
+          <h3>播放卡顿是网站问题吗？</h3>
+          <p>多数情况与片源线路或本地网络有关。可先切换线路，再检查网络状态。不同线路的画质与稳定性并不一致。</p>
+        </div>
+        <div class="faq-item">
+          <h3>片单多久更新一次？</h3>
+          <p>热门片单按站内关注度周期性调整，新片速览会随片源上线补充，具体更新节奏以页面实际展示为准。</p>
+        </div>
+        <div class="faq-item">
+          <h3>可以在手机上观看吗？</h3>
+          <p>页面已适配手机屏幕，导航、搜索与卡片均可正常操作。播放体验取决于片源页面在移动端的适配情况。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 客户端下载条 -->
+  <section class="block" id="download" style="padding-bottom:26px">
+    <div class="wrap">
+      <div class="dl-bar">
+        <div class="txt">
+          <h3>555电影网在线观看 客户端</h3>
+          <p>将常用片单与搜索入口集中到桌面端，减少重复查找步骤。当前版本信息与安装包将在上线后同步提供。</p>
+        </div>
+        <a class="btn-download" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3v12M7 11l5 5 5-5M4 20h16"/>
+          </svg>
+          下载
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+          <rect width="64" height="64" rx="14" fill="#1b2532" stroke="#2a3646"/>
+          <circle cx="32" cy="32" r="17" fill="none" stroke="#f5b301" stroke-width="3"/>
+          <path d="M27 23l16 9-16 9z" fill="#f5b301"/>
+        </svg>
+        <span>555电影网在线观看</span>
+      </div>
+      <div class="foot-links">
+        <a href="#hot">热门片单</a>
+        <a href="#category">分类浏览</a>
+        <a href="#howto">观看说明</a>
+        <a href="#faq">常见问题</a>
+        <a href="#download">客户端</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>555电影网在线观看 · 影视信息与播放入口聚合页面</span>
+      <span>本站不存储影片文件，内容版权归原片源方所有</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var navToggle = document.getElementById('navToggle');
+  var mainNav = document.getElementById('mainNav');
+  navToggle.addEventListener('click', function(){
+    var open = mainNav.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    navToggle.setAttribute('aria-label', open ? '收起导航' : '展开导航');
+  });
+  mainNav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      mainNav.classList.remove('open');
+      navToggle.setAttribute('aria-expanded','false');
+    });
+  });
+
+  var input = document.getElementById('movieSearch');
+  var btn = document.getElementById('searchBtn');
+  var chips = document.getElementById('chips');
+  var cards = Array.prototype.slice.call(document.querySelectorAll('#movieGrid .movie-card'));
+  var activeKey = '';
+
+  function applyFilter(){
+    var q = (input.value || '').trim().toLowerCase();
+    cards.forEach(function(card){
+      var text = (card.getAttribute('data-key') || '') + ' ' + card.textContent;
+      var matchText = !q || text.toLowerCase().indexOf(q) > -1;
+      var matchKey = !activeKey || (card.getAttribute('data-key') || '').indexOf(activeKey) > -1;
+      card.style.display = (matchText && matchKey) ? '' : 'none';
+    });
+  }
+
+  btn.addEventListener('click', function(){
+    applyFilter();
+    document.getElementById('hot').scrollIntoView({behavior:'smooth'});
+  });
+  input.addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){
+      e.preventDefault();
+      applyFilter();
+      document.getElementById('hot').scrollIntoView({behavior:'smooth'});
+    }
+  });
+  input.addEventListener('input', function(){
+    if(!input.value){ applyFilter(); }
+  });
+
+  chips.querySelectorAll('.chip').forEach(function(chip){
+    chip.addEventListener('click', function(){
+      chips.querySelectorAll('.chip').forEach(function(c){ c.classList.remove('on'); });
+      chip.classList.add('on');
+      activeKey = chip.getAttribute('data-key') || '';
+      applyFilter();
+    });
+  });
+})();
+</script>
+
+</body>
+                      </html>
